@@ -1,0 +1,48 @@
+.challenge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px;
+}
+
+.problem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px;
+  border: 2px solid #333;
+  padding: 20px;
+}
+
+.answer-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+label {
+  margin: 5px;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+  width: 100px;
+}
+
+button {
+  margin: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.winner {
+  margin: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: green;
+}

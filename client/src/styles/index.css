@@ -1,0 +1,39 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+body{
+  background-color: rgba(29, 29, 36, 0.979);
+}
+.nav-items{
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+.nav-items > h2{
+  color:aqua;
+  padding-left: 10px;
+}
+.nav-items > h3{
+  position: relative;
+  padding-left: 75%;
+  color: white;
+}
+main{
+  padding-top: 15px;
+}
+.main-title{
+  color: white;
+  padding-left: 20px;
+}
+.main-items{
+  color: white;
+  padding-top: 20px;
+  padding-left: 60px;
+}
+.main-items >li{
+  padding: 5px;
+}

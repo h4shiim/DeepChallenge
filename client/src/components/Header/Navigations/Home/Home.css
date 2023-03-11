@@ -1,0 +1,101 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+  background-image: url(body-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #bcb9b9;
+}
+
+.homeTitle {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #bcb9b9;
+  text-align: center;
+}
+
+.homeSubtitle {
+  font-size: 36px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #bcb9b9;
+  text-align: center;
+}
+
+.homeDescription {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #bcb9b9;
+  text-align: center;
+  width: 60%;
+}
+
+.homeList {
+  list-style: none;
+  font-size: 18px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeList li {
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  text-align: center;
+  color: #bcb9b9;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 2px solid #703339;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.homeList li:hover {
+  transform: scale(1.1);
+  border-color: #333;
+  color: #976231;
+  cursor: pointer;
+}
+
+.homeList li span {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.homeList li p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.homeButton {
+  background-color: #433e3f;
+  color: #bcb9b9;
+  border: none;
+  padding: 20px 40px;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 20px rgba(210, 181, 181, 0.25);
+  transition: all 0.3s ease-in-out;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+.homeButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.homeButton:active {
+  transform: translateY(0px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+}

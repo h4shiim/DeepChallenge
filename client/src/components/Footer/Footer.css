@@ -1,0 +1,30 @@
+.footer {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999; /* Set a high z-index value to keep it on top of other elements */
+}
+  
+.footer__text {
+  margin: 0;
+}
+
+.footer__nav {
+  display: flex;
+  margin: 0;
+}
+
+.footer__link {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  color: #333;
+}
