@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BackgroundVideo from "./backgroundVideo";
 import "./Home.css";
 
 const Home = () => {
   return (
     <div className="homeContainer">
+      <BackgroundVideo />
+      
       <h1 className="homeTitle">Welcome to Web Development Interactive Learning</h1>
       <p className="homeDescription">
         Our website is designed to help you learn web development in an interactive and engaging way. 
@@ -33,6 +36,7 @@ const Home = () => {
       <Link to="/register">
       <button className="homeButton">Sign Up</button>
       </Link>
+      
     </div>
   );
 };

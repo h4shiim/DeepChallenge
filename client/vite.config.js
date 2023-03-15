@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // Set the publicPath to the root of your website
-        publicPath: '/',
+        publicPath: '/home',
       },
     },
     // Add your favicon to the assets directory
@@ -22,6 +22,7 @@ export default defineConfig({
       mimeTypes: {
         "application/javascript": ["js", "jsx"],
       },
+      port: 4000 // Add this line to set the port to 4000
     },
   },
 });

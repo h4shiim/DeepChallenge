@@ -4,12 +4,16 @@ import Header from './components/Header/Navigations/Header/Header'
 import Home from './components/Header/Navigations/Home/Home'
 import Tracks from './components/Header/Navigations/Tracks/Tracks'
 import Html from './components/Header/Navigations/Learnings/Html'
-import Challenge from './components/Header/Navigations/Challenges/Challenge.jsx'
-import RegisterForm from './components/Header/Navigations/Register/Register.jsx'
+import Challenges from './components/Header/Navigations/Challenges/Challenges.jsx'
+import Register from './components/Header/Navigations/Register/Register.jsx'
 import Footer from './components/Footer/Footer'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css"
+import Login from './components/Header/Navigations/Register/Login.jsx';
+import Profile from './components/Header/Navigations/Register/Profile.jsx';
+import PrivateChallenges from './components/Header/Navigations/Challenges/PrivateChallenges';
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -20,8 +24,11 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/tracks" element={<Tracks />} />
           <Route path="/html" element={<Html />} />
-          <Route path="/challenges" element={<Challenge />} />
-          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/challenges" element={<Challenges />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/privatechallenges" element={<PrivateChallenges />} />
         </Routes>
       </Router>
       <Footer />

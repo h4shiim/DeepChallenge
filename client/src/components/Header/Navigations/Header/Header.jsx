@@ -28,6 +28,9 @@ const Header = () => {
             <Nav.Link href="/Register" style={{color: "#bcb9b9"}}>Register</Nav.Link>
             <Nav.Link href="/Tracks" style={{color: "#bcb9b9"}}>Tracks</Nav.Link>
             <Nav.Link href="/Challenges" style={{color: "#bcb9b9"}}>Challenges</Nav.Link>
+            <Nav.Link href="/Login" style={{color: "#bcb9b9"}}>Sign in</Nav.Link>
+            <Nav.Link href="/Profile" style={{color: "#bcb9b9"}}>Profile</Nav.Link>
+            <Nav.Link href="/PrivateChallenges" style={{color: "#bcb9b9"}}>pc</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

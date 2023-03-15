@@ -1,26 +1,33 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-const userSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-  },
-  {
-    timestamps: true,
-  }
-);
+const userSchema = new mongoose.Schema({
+  username: String,
+  email: String,
+  password: String,
+});
 
-const User = mongoose.model('User', userSchema);
-
-const findOne = async (conditions) => {
-  try {
-    const user = await User.findOne(conditions);
-    return user;
-  } catch (error) {
-    console.log(error);
-    throw new Error('An error occurred while finding the user.');
-  }
+// Compare password method
+userSchema.methods.comparePassword = async function (password) {
+  return bcrypt.compare(password, this.password);
 };
 
-export { User, findOne };
+module.exports = mongoose.model('User', userSchema);
+
+// Hash the password before saving it to the database
+userSchema.pre('save', async function (next) {
+  try {
+    if (!this.isModified('password')) {
+      return next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(this.password, salt);
+    this.password = hash;
+    next();
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+module.exports = mongoose.model('User', userSchema);

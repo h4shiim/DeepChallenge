@@ -1,0 +1,67 @@
+mongodb+srv://dbRuin:Justformongo@cluster0.k6tp1e8.mongodb.net/?retryWrites=true&w=majority
+
+
+
+
+my files structure:
+
+DeepChallenge
+client
+   dist
+      -assets
+      -404.html
+      -index.html
+   public
+      -index.html
+   src
+
+      assets
+      components
+         Footer
+            -Footer.css
+            -Footer.jsx
+         Header
+            Challenges
+               -Challenges.jsx
+               -Challenges.css
+            Header
+               -Header.jsx
+               -Header.css
+            Home
+               -Home.jsx
+               -Home.css
+            Learnings
+            Register
+               -Register.jsx
+               -Register.css
+               -Login.jsx
+            Tracks
+               -Tracks.jsx
+               -Tracks.css
+         MainContent
+            MainContent.jsx
+      styles
+      App.jsx
+      index.js
+      main.jsx
+
+   -index.html
+   -vite.config.js
+   -package.json
+
+server
+   config
+      -db.js
+   controllers
+      -authController.js
+      -userController.js
+   models
+      -User.js
+   router
+      -authRoutes.js
+      -userRoutes.js
+   -config.js
+   -server.js
+   -package.json
+-.env
+-package.json

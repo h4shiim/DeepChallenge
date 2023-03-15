@@ -1,72 +1,72 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './Register.css'
+import { TextField, Button } from '@material-ui/core';
+import BackgroundVideo from '../Home/backgroundVideo';
+import './Register.css'; // import the Register.css file
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleRegister = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setErrorMsg('Passwords do not match');
-    } else {
-      try {
-        const res = await axios.post('/api/auth/register', {
-          username,
-          email,
-          password,
-        });
-        console.log(res.data);
-      } catch (err) {
-        console.log(err.response.data.msg);
-        setErrorMsg(err.response.data.msg);
-      }
+
+    try {
+      const response = await fetch('http://localhost:4000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      const data = await response.text();
+
+      console.log(data);
+    } catch (err) {
+      console.log(err);
     }
   };
 
   return (
-    <div className="register">
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Username"
+    <div className='register-container'>
+      <BackgroundVideo />
+      <form className="register-form" onSubmit={handleSubmit}>
+        <TextField
+          className="register-input"
+          label="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          fullWidth
         />
-        <input
+        <TextField
+          className="register-input"
+          label="Email"
           type="email"
-          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          fullWidth
         />
-        <input
+        <TextField
+          className="register-input"
+          label="Password"
           type="password"
-          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          fullWidth
         />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-        {errorMsg && <p className="error-msg">{errorMsg}</p>}
-        <button type="submit">Register</button>
+        <Button
+          className="register-button"
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
+          Register
+        </Button>
       </form>
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
     </div>
   );
 };

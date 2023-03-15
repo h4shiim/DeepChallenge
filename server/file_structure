@@ -1,0 +1,15 @@
+total 136
+-rw-r--r-- 1 G15 197609     0 Mar 15 01:36 file_structure
+drwxr-xr-x 1 G15 197609     0 Mar 15 01:33 Login/
+drwxr-xr-x 1 G15 197609     0 Mar 15 01:33 Register/
+drwxr-xr-x 1 G15 197609     0 Mar 15 01:33 Profile/
+-rw-r--r-- 1 G15 197609   973 Mar 15 01:26 package.json
+-rw-r--r-- 1 G15 197609 93076 Mar 15 01:26 package-lock.json
+drwxr-xr-x 1 G15 197609     0 Mar 15 01:26 node_modules/
+-rw-r--r-- 1 G15 197609  7209 Mar 15 01:20 server.js
+drwxr-xr-x 1 G15 197609     0 Mar 14 20:14 models/
+drwxr-xr-x 1 G15 197609     0 Mar 14 20:10 routes/
+drwxr-xr-x 1 G15 197609     0 Mar 14 19:24 Challenges/
+drwxr-xr-x 1 G15 197609     0 Mar 12 03:03 middlewares/
+drwxr-xr-x 1 G15 197609     0 Mar 12 01:21 config/
+drwxr-xr-x 1 G15 197609     0 Mar 11 13:54 controllers/
