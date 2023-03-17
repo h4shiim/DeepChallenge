@@ -1,76 +1,145 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
-import './Login.css';
+import { TextField, Button, Grid, Link, IconButton, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Facebook, GitHub, Google } from '@material-ui/icons';
 import BackgroundVideo from '../Home/backgroundVideo';
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '100vh',
+    background: '#f7f7f7',
+    padding: theme.spacing(2),
+  },
+  formContainer: {
+    background: '#fff',
+    borderRadius: '10px',
+    padding: theme.spacing(4),
+    boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
+  },
+  submitButton: {
+    marginTop: theme.spacing(2),
+    borderRadius: '25px',
+    textTransform: 'none',
+    padding: theme.spacing(1, 3),
+    background: '#3f51b5',
+    color: '#fff',
+    '&:hover': {
+      background: '#3f51b5',
+      opacity: '0.8',
+    },
+  },
+  socialIconsContainer: {
+    marginTop: theme.spacing(2),
+    textAlign: 'center',
+  },
+  socialIcon: {
+    margin: theme.spacing(0, 2),
+  },
+}));
+
 const Login = () => {
+  const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const token = localStorage.getItem('token');
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (!token) {
-    // Redirect the user to the login page
-    window.location.href = '/profile';
-    return;
-  }
+    if (!token) {
+      // Redirect the user to the login page
+      window.location.href = '/profile';
+      return;
+    }
 
-  try {
-    const response = await fetch('http://localhost:4000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch('http://localhost:4000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    console.log(data);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
-    <div className='login-container'>
+    <div className={classes.container}>
       <BackgroundVideo />
-      <form className="login-form" onSubmit={handleSubmit}>
-        <TextField
-          className="login-input"
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          fullWidth
-        />
-        <TextField
-          className="login-input"
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          fullWidth
-        />
-        <Button
-          className="login-button"
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
-          Login
-        </Button>
-      </form>
-    </div>
-  );
+      <form className={classes.formContainer} onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              className="login-input"
+              label="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              className="login-input"
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button className={classes.submitButton} variant="contained" color="primary" type="submit">
+              Sign In
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body2">
+              <Link href="#">Forgot password?</Link>
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <div className={classes.socialIconsContainer}>
+              <Grid container justify="center">
+<Grid item>
+<IconButton className={classes.socialIcon}>
+{/* <Google /> */}
+</IconButton>
+</Grid>
+<Grid item>
+<IconButton className={classes.socialIcon}>
+<GitHub />
+</IconButton>
+</Grid>
+<Grid item>
+<IconButton className={classes.socialIcon}>
+<Facebook />
+</IconButton>
+</Grid>
+</Grid>
+</div>
+</Grid>
+</Grid>
+</form>
+</div>
+);
 };
 
 export default Login;

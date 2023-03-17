@@ -1,60 +1,77 @@
+/* Login Container */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  /* background-color: black; */
+  min-height: 100vh;
+  background-color: #f2f2f2;
 }
 
-.login-form {
+/* Login Card */
+.login-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 500px;
   padding: 30px;
-  border-radius: 10px;
-  background-color: rgba(189, 183, 183, 0.5);
-  box-shadow: 0px 0px 15px rgba(209, 188, 188, 0.5);
-  color: white;
-  width: 30%;
-  height: 30%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-.login-form h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  background-color: #0b5d69;
+/* Login Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
+/* Login Input */
 .login-input {
   margin-bottom: 20px;
   width: 100%;
-  max-width: 350px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: rgba(194, 185, 185, 0.7);
-  color: black;
-  font-size: 1.2rem;
 }
 
-.login-input:focus {
-  outline: none;
-}
-
+/* Login Button */
 .login-button {
-  margin-top: 30px;
+  margin-top: 20px;
   width: 100%;
-  max-width: 350px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #0b5d69;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
+  text-transform: none;
 }
 
-.login-button:hover {
-  background-color: #128597;
+/* Social Media Icons */
+.social-media-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.social-media-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-media-icon:hover {
+  transform: scale(1.2);
+  background-color: #e0e0e0;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  /* Login Card */
+  .login-card {
+    padding: 20px;
+  }
 }
