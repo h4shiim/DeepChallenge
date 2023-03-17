@@ -15,7 +15,7 @@ const Header = () => {
       <Navbar  expand="lg">
       <Container fluid>
         <img src={logo} alt="Logo" width="60px"/>
-        <Navbar.Brand href="#" style={{color: "#bcb9b9"}} className="logoName">Deep Challenge</Navbar.Brand>
+        <Navbar.Brand href="/home" style={{color: "#bcb9b9"}} className="logoName">Deep Challenge</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -24,12 +24,11 @@ const Header = () => {
             navbarScroll
           >
             
-            <Nav.Link href="/Home" style={{color: "#bcb9b9"}}>Home</Nav.Link>
+            
             <Nav.Link href="/Register" style={{color: "#bcb9b9"}}>Register</Nav.Link>
             <Nav.Link href="/PrivateChallenges" style={{color: "#bcb9b9"}}>Choose your track</Nav.Link>
             <Nav.Link href="/Challenges" style={{color: "#bcb9b9"}}>Challenges</Nav.Link>
             <Nav.Link href="/Login" style={{color: "#bcb9b9"}}>Sign in</Nav.Link>
-            <Nav.Link href="/Profile" style={{color: "#bcb9b9"}}>Profile</Nav.Link>
             
           </Nav>
           <Form className="d-flex">
