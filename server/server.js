@@ -35,10 +35,10 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/register', registerRoutes);
 
 
-// // Start the server
-// app.listen(PORT, () => {
-//   console.log(`Server listening on port ${PORT}`);
-// });
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
 
 /****************************************************************************************************************************** */
 
