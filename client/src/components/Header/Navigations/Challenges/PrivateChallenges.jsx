@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProgrammingTracks.css';
+import "../Home/backgroundVideo"
+import BackgroundVideo from '../Home/backgroundVideo';
 
 const ProgrammingTracks = () => {
   return (
     <div className="programming-tracks-container">
+      <BackgroundVideo />
       <h1 className="programming-tracks-header">Choose your programming track</h1>
       <Link to="/tracks" className="programming-track-link">
         <div className="programming-track">
@@ -41,7 +44,7 @@ const ProgrammingTracks = () => {
           <p className="programming-track-description">Learn the basics of programming.</p>
         </div>
         <div className="programming-track-status">
-          <span className="programming-track-available">Available</span>
+          <span className="programming-track-coming-soon">Coming soon</span>
         </div>
       </div>
     </div>

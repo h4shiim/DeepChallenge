@@ -13,9 +13,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
-
-
 const App = () => {
   return (
     <>
@@ -31,9 +28,17 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/privatechallenges" element={<PrivateChallenges />} />
+          <Route
+            render={({ location }) => {
+              if (location.pathname === '/tracks') {
+                return null;
+              }
+
+              return <Footer />;
+            }}
+          />
         </Routes>
       </Router>
-      <Footer />
     </>
   );
 };

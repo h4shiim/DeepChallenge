@@ -4,16 +4,16 @@
     padding: 20px;
   }
   nav{
-    background-color: #040000ba;
+    background-color: black;
   }
   /* .navItems{
     padding-left: 10px;
   } */
   .navbar-brand{
-    color: #040000ba;
+    color: black;
   }
   .container-fluid{
-    background-color: #040000ba;
+    background-color: black;
   }
   .navBar {
     display: flex;

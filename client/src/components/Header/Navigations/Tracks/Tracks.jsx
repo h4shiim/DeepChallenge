@@ -24,7 +24,7 @@ const OnlineIDE = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className='track-body' style={{ display: 'flex' }}>
       <div className="learning-tab"style={{ width: '33%', height:'' }}>
         {/* <h2>Courses</h2> */}
               <Html />

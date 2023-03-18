@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import "./Challenges.css";
+import "../Home/backgroundVideo"
+import BackgroundVideo from "../Home/backgroundVideo";
 
 const socket = io("http://localhost:3001"); // Replace with your server URL
 
@@ -62,6 +64,7 @@ const Challenges = () => {
 
   return (
     <div className="challenges-container">
+      <BackgroundVideo />
       <div className="task-box">
         <h2>Task</h2>
         <p>{task}</p>
@@ -76,7 +79,7 @@ const Challenges = () => {
         <button onClick={handleAnswerSubmit}>Submit</button>
       </div>
       <div className="timer-box">
-        <h2>Time Remaining</h2>
+        {/* <h2>Time Remaining</h2> */}
         <p>{timer} seconds</p>
       </div>
       {result && (

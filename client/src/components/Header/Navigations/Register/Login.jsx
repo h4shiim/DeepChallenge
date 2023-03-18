@@ -3,21 +3,24 @@ import { TextField, Button, Grid, Link, IconButton, Typography } from '@material
 import { makeStyles } from '@material-ui/core/styles';
 import { Facebook, GitHub, Google } from '@material-ui/icons';
 import BackgroundVideo from '../Home/backgroundVideo';
+import "./Login.css"
 
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '50%',
+    marginLeft: '25%',
     minHeight: '100vh',
-    background: '#f7f7f7',
     padding: theme.spacing(2),
   },
   formContainer: {
-    background: '#fff',
-    borderRadius: '10px',
+    background: '#ffffffa8',
+    // opacity: '0.6',
+    borderRadius: '20px',
     padding: theme.spacing(4),
-    boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
+    boxShadow: '1px 8px 171px rgb(180 184 185 / 70%)',
   },
   submitButton: {
     marginTop: theme.spacing(2),
@@ -78,10 +81,10 @@ const Login = () => {
   return (
     <div className={classes.container}>
       <BackgroundVideo />
-      <form className={classes.formContainer} onSubmit={handleSubmit}>
+      <form className={classes.formContainer} onSubmit={handleSubmit} >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            
+          <BackgroundVideo />
           </Grid>
           <Grid item xs={12}>
             <TextField

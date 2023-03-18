@@ -1,9 +1,11 @@
 import React from "react";
 import "./Footer.css";
+import BackgroundVideo from '../Header/Navigations/Home/backgroundVideo.jsx';
 
 function Footer() {
   return (
     <footer className="footer">
+      
       <div className="container">
         <div className="row">
           <div className="col-md-6 col-lg-4 about-us">
@@ -12,6 +14,7 @@ function Footer() {
             Deep Challenge is a modern online learning platform that aims to revolutionize the way people learn programming. Our mission is to make programming education accessible to everyone, no matter their age or background. We provide high-quality, interactive courses and challenges that are designed to engage and challenge learners of all levels. Join us today and start your journey towards becoming a skilled programmer!.{" "}
             </p>
           </div>
+          <BackgroundVideo />
           <div className="col-md-6 col-lg-4 quick-links">
             <h3>Quick Links</h3>
             <ul>
