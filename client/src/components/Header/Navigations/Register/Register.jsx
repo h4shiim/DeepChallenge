@@ -24,10 +24,32 @@ const Register = () => {
 
       const data = await response.text();
 
-      console.log(data);
+      if (response.ok) {
+        alert('Registration successful! Please login to continue.');
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        window.location.href = '/login';
+      } else {
+        alert(data);
+      }
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+  const handlePasswordChange = (e) => {
+    if (!passwordRegex.test(e.target.value)) {
+      e.target.setCustomValidity(
+        'Password must contain at least 8 characters including at least 1 uppercase letter, 1 lowercase letter, and 1 number.'
+      );
+    } else {
+      e.target.setCustomValidity('');
+    }
+    setPassword(e.target.value);
   };
 
   return (
@@ -61,7 +83,7 @@ const Register = () => {
             label="Password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             required
             fullWidth
           />
