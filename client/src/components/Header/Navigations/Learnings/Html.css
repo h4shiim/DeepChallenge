@@ -1,69 +1,75 @@
-.html-introduction {
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #ccc;
-    text-align: center;
-  }
-  
-  .html-introduction h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .html-introduction pre {
-    background-color: #3c3c3c;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: white;
-  }
+/* Style for HTML content section */
+.html-content {
+max-width: 800px;
+margin: 0 auto;
+padding: 40px;
+}
 
-  
-  .html-page h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .html-page p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin: 0;
-    max-width: 600px;
-  }
+.html-content h2 {
+font-size: 32px;
+font-weight: bold;
+margin-bottom: 20px;
+}
 
-    
-  .html-slider {
-    display: flex;
-    flex-direction: row;
-    align-items: last baseline;
-    padding: 20px;
-  }
-  
-  .html-page {
-    width: 80%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .html-slider-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    color: #333;
-    cursor: not-allowed;
-  }
+.html-content p {
+font-size: 18px;
+line-height: 1.5;
+margin-bottom: 20px;
+}
+
+.html-content h3 {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+.task{
+  margin-bottom: 1em;
+}
+
+/* Style for page navigation section */
+.pagination {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(149 149 142);
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 5px;
+  margin: 0 5px;
+}
+.pagination li a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  border-bottom: none;
+  font-size: 14px;
+}
+.pagination li a:hover {
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+}
+.pagination li a:active{
+  color:antiquewhite;
+}
+.pagination li.active a {
+  font-weight: bold;
+}
+.pagination li:last-child {
+  margin-right: 0;
+}
+
+.w3link a{
+  font-size: 16px;
+}
+

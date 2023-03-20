@@ -2,7 +2,9 @@
     background-color: rgb(149 149 142);
 }
 .output{
-    background-color: rgb(149 149 142);
+    background-color: rgb(255, 255, 255);
+    border-style:double;
+    border-width: 4px;
 }
 .run{
     position: absolute;
@@ -19,3 +21,7 @@
 .track-body{
     background-color: black;
 }
+
+/****************************************************************************************/
+
+

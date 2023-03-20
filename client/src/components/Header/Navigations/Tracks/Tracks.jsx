@@ -16,12 +16,15 @@ const OnlineIDE = () => {
 
   const handleRunClick = () => {
     try {
-      const result = eval(code);
-      setOutput(JSON.stringify(result, null, 2));
+      // Render the HTML code
+      const html = eval(`\`${code}\``);
+      // Set the output state to the rendered HTML
+      setOutput(html);
     } catch (error) {
       setOutput(error.message);
     }
   };
+  
 
   return (
     <div className='track-body' style={{ display: 'flex' }}>
@@ -34,7 +37,7 @@ const OnlineIDE = () => {
               <Editor
                      width="100%"
                      height="100vh"
-                     defaultLanguage="javascript"
+                     defaultLanguage="html"
                      value={code}
                      onChange={handleCodeChange}
                      theme="vs-dark"
@@ -43,7 +46,7 @@ const OnlineIDE = () => {
               </div>
               <div className="output" style={{ width: '33%' }}>
               {/* <h2>Output</h2> */}
-              <pre>{output}</pre>
+              <div dangerouslySetInnerHTML={{ __html: output }} />
               </div>
               </div>
               );
