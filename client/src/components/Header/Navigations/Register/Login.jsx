@@ -53,7 +53,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
   
     if (token) {
       // Redirect the user to the profile page if already logged in

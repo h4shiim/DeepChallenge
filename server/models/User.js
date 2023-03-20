@@ -4,8 +4,13 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: String,
   email: String,
-  password: String,
+  password: {
+    type: String,
+    required: true,
+    match: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/ // At least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number
+  }
 });
+
 
 
 /// Hash the password before saving it to the database
