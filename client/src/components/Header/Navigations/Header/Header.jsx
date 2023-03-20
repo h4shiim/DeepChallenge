@@ -14,7 +14,7 @@ const Header = () => {
   return (
       <Navbar  expand="lg">
       <Container fluid>
-        <img src={logo} alt="Logo" width="60px"/>
+        <Nav.Link href="/home"><img src={logo} alt="Logo" width="60px"/> </Nav.Link>
         <Navbar.Brand href="/home" style={{color: "#bcb9b9"}} className="logoName">Deep Challenge</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

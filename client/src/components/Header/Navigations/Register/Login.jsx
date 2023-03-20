@@ -3,6 +3,7 @@ import { TextField, Button, Grid, Link, IconButton, Typography } from '@material
 import { makeStyles } from '@material-ui/core/styles';
 import { Facebook, GitHub, Google } from '@material-ui/icons';
 import BackgroundVideo from '../Home/backgroundVideo';
+import axios from 'axios';
 import "./Login.css"
 
 const useStyles = makeStyles((theme) => ({
@@ -48,31 +49,35 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const token = localStorage.getItem('token');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!token) {
-      // Redirect the user to the login page
+  
+    const token = sessionStorage.getItem('token');
+  
+    if (token) {
+      // Redirect the user to the profile page if already logged in
       window.location.href = '/profile';
       return;
     }
-
+  
     try {
-      const response = await fetch('http://localhost:4000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`,
+      const response = await axios.post(
+        'http://localhost:4000/api/login',
+        {
+          email,
+          password,
         },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      console.log(data);
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+  
+      const token = response.data.token;
+      sessionStorage.setItem('token', token);
+      window.location.href = '/profile';
     } catch (err) {
       console.log(err);
     }
@@ -120,7 +125,7 @@ const Login = () => {
           </Grid>
           <Grid item xs={12}>
             <div className={classes.socialIconsContainer}>
-              <Grid container justify="center">
+              <Grid container justifyContent="center">
 <Grid item>
 <IconButton className={classes.socialIcon}>
 {/* <Google /> */}
