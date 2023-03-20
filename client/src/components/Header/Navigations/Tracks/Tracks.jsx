@@ -4,8 +4,18 @@ import './Tracks.css'
 import Editor from '@monaco-editor/react';
 
 const OnlineIDE = () => {
-  const [courses, setCourses] = useState([]);
-  const [code, setCode] = useState('const test;');
+  const [code, setCode] = useState(`<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>DeepChallenge</title>
+  </head>
+  <body>
+      <div>Start your first HTML Lesson</div>
+  </body>
+  </html>`);
   const [output, setOutput] = useState('');
 
 
