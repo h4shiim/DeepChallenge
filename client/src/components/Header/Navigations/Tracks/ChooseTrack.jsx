@@ -12,8 +12,8 @@ const ProgrammingTracks = () => {
       <Link to="/tracks" className="programming-track-link">
         <div className="programming-track">
           <div className="programming-track-content">
-            <h2 className="programming-track-title">Web development</h2>
-            <p className="programming-track-description">Learn to build websites and web applications.</p>
+            <h2 className="programming-track-title title-color">Web development</h2>
+            <p className="programming-track-description title-des">Learn to build websites and web applications.</p>
           </div>
           <div className="programming-track-status">
             <span className="programming-track-available">Available</span>

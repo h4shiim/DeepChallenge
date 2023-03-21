@@ -83,10 +83,30 @@ const HTMLContent = [
           </li>
         );
       }
+
+
+        const [points, setPoints] = useState(0);
+        const handleButtonClick = () => {
+          setPoints(points + 1);
+        };
     
       return (
         <div className="html-container">
           <Page currentPage={currentPage} />
+
+
+          <div className="points-bar-container">
+      <div className="points-bar">
+        <div className="points-earned" style={{ width: `${points}%` }}>
+          <span className="points-count">Total points: {points}</span>
+        </div>
+      </div>
+      <button className="add-point-button" onClick={handleButtonClick}>
+        Submit
+      </button>
+    </div>
+
+          
           <nav aria-label="Page navigation example">
             <ul className="pagination">
               <li className={currentPage === 0 ? 'disabled' : ''}>
@@ -102,7 +122,9 @@ const HTMLContent = [
               </li>
             </ul>
           </nav>
+          
         </div>
+        
       );
     };
     
