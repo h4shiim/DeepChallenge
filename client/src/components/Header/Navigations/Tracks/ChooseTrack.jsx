@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ProgrammingTracks.css';
+import './ChooseTrack.css';
 import "../Home/backgroundVideo"
 import BackgroundVideo from '../Home/backgroundVideo';
 

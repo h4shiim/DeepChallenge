@@ -3,6 +3,9 @@
 max-width: 800px;
 margin: 0 auto;
 padding: 40px;
+border-style: double;
+border-width: 3px;
+box-shadow: inset -2px 3px 20px 25px rgb(255 235 235 / 12%);
 }
 
 .html-content h2 {

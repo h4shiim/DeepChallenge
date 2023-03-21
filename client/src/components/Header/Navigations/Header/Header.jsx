@@ -8,37 +8,27 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from "../Header/logo.png"
 
-
-
 const Header = () => {
   return (
-      <Navbar  expand="lg">
+    <Navbar expand="lg" className="navbar">
       <Container fluid>
-        <Nav.Link href="/home"><img src={logo} alt="Logo" width="60px"/> </Nav.Link>
-        <Navbar.Brand href="/home" style={{color: "#bcb9b9"}} className="logoName">Deep Challenge</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Brand href="/home" className="navbar-brand">
+          <img className='logoImg' src={logo} alt="Logo" width="60px" />
+          <span className="logoName">Deep Challenge</span>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" className="navbar-toggler" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0 navItems"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            
-            
-            <Nav.Link href="/Register" style={{color: "#bcb9b9"}}>Register</Nav.Link>
-            <Nav.Link href="/PrivateChallenges" style={{color: "#bcb9b9"}}>Choose your track</Nav.Link>
-            <Nav.Link href="/Challenges" style={{color: "#bcb9b9"}}>Challenges</Nav.Link>
-            <Nav.Link href="/Login" style={{color: "#bcb9b9"}}>Sign in</Nav.Link>
-            
+          <Nav className="navbar-nav me-auto mb-2 mb-lg-0">
+            <Nav.Link href="/Register" className="nav-link">Register</Nav.Link>
+            <Nav.Link href="/ChooseTrack" className="nav-link">Choose your track</Nav.Link>
+            <Nav.Link href="/Challenges" className="nav-link">Challenges</Nav.Link>
+            <Nav.Link href="/Login" className="nav-link">Sign in</Nav.Link>
+            <Nav.Link href="/Payment" className="nav-link">Plans</Nav.Link>
+            <Nav.Link href="/ContactUs" className="nav-link">Contact Us</Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Looking for something?"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-secondary" style={{color: "#bcb9b9"}}>Search</Button>
+            <Form.Control type="search" placeholder="Looking for something?" className="form-control me-2" aria-label="Search" />
+            <Button variant="outline-secondary" className="btn-search">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

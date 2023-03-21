@@ -54,7 +54,7 @@ const OnlineIDE = () => {
                    />
               <button className='run' onClick={handleRunClick}>Run</button>
               </div>
-              <div className="output" style={{ width: '33%' }}>
+              <div className="output" style={{ width: '34%' }}>
               {/* <h2>Output</h2> */}
               <div dangerouslySetInnerHTML={{ __html: output }} />
               </div>

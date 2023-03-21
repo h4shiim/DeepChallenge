@@ -8,7 +8,7 @@
 }
 .run{
     position: absolute;
-    bottom: -74px;
+    bottom: -88px;
     width: 5%;
     border-radius: 7px;
 }
@@ -20,6 +20,8 @@
 }
 .track-body{
     background-color: black;
+    margin-top: 12px;
+    padding: 2px;
 }
 
 /****************************************************************************************/

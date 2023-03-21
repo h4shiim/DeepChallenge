@@ -8,10 +8,12 @@ import Register from './components/Header/Navigations/Register/Register.jsx'
 import Footer from './components/Footer/Footer'
 import Login from './components/Header/Navigations/Register/Login.jsx';
 import Profile from './components/Header/Navigations/Register/Profile.jsx';
-import PrivateChallenges from './components/Header/Navigations/Challenges/PrivateChallenges';
+import ChooseTrack from './components/Header/Navigations/Tracks/ChooseTrack.jsx';
+import Payment from './components/Payments/Payment.jsx';
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ContactUs from './components/Header/Navigations/Contact/ContactUs'
 
 const App = () => {
   return (
@@ -27,7 +29,9 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/privatechallenges" element={<PrivateChallenges />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/choosetrack" element={<ChooseTrack />} />
           <Route
             render={({ location }) => {
               if (location.pathname === '/tracks') {

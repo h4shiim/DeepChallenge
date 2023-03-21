@@ -1,0 +1,266 @@
+/* Payment component styles */
+
+.payment-component {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+  
+  .payment-component__title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+  }
+  
+  .payment-component__plans {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
+  
+  .payment-component__plan {
+    width: calc(33.33% - 20px);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 20px 7px rgb(253 250 250 / 71%);
+    border-radius: 5px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+  }
+  
+  .payment-component__plan:hover {
+    transform: translateY(-5px);
+  }
+  
+  .payment-component__plan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #ffffff;
+    transform: skew(-20deg) translateX(-20px);
+  }
+  
+  .payment-component__plan-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+  
+  .payment-component__plan-price {
+    font-size: 32px;
+    font-weight: bold;
+    color: #f2a900;
+    margin-bottom: 40px;
+  }
+  
+  .payment-component__plan-features {
+    list-style: none;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+  
+  .payment-component__plan-features li {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4d4d4d;
+    margin-bottom: 10px;
+  }
+  
+  .payment-component__plan-button {
+    display: block;
+    width: 100%;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    background-color: #0d9bf9;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .payment-component__plan-button:hover {
+    background-color: #1d76d3;
+  }
+  
+  .payment-component__plan.selected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #0d9bf9;
+    transform: skew(-20deg) translateX(-20px);
+  }
+  
+  .payment-component__plan.selected .payment-component__plan-button {
+    background-color: #f2a900;
+  }
+  
+  .payment-component__plan.selected .payment-component__plan-title {
+    color: #0d9bf9;
+  }
+  
+  .payment-component__plan.selected .payment-component__plan-price {
+    color: #0d9bf9;
+  }
+  /*************************************/
+  .payment-component__payment-methods {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    color: white;
+  }
+  
+  .payment-component__payment-method {
+    margin-right: 20px;
+    
+  }
+  
+  .payment-component__payment-method:last-child {
+    margin-right: 0;
+    
+  }
+  
+  .payment-component__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: white;
+    }
+    
+    .payment-component__payment-methods {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+    
+    .payment-component__payment-method {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    }
+    
+    .payment-component__payment-method-input {
+    margin-right: 0.5rem;
+    }
+    
+    .payment-component__payment-method-label {
+        position: relative;
+        display: inline-block;
+    }
+    
+      .payment-component__payment-method-hover {
+        position: absolute;
+        top: -10px;
+        right: -120%;
+        background-color: #434040;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      .payment-component__payment-method-label:hover .payment-component__payment-method-hover {
+        opacity: 1;
+      }
+    
+      .payment-component__form {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin-top: 24px;
+        background-color: rgb(160, 160, 160);
+        box-shadow: 0px 0px 20px 7px rgb(102 102 102 / 71%);
+        border-radius: 6px;
+      }
+    
+    .payment-component__form-label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+        color: black;
+        font-weight: bold;
+    }
+
+    .payment-component__form-label span {
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 8px;
+      }
+    
+      .payment-component__form-input {
+        height: 40px;
+        padding: 8px 12px;
+        font-size: 16px;
+        color: #222;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: border-color 0.2s ease-in-out;
+      }
+      .payment-component__form-input:focus {
+        outline: none;
+        border-color: #0077c5;
+      }
+    
+      .payment-component__form-row {
+        display: flex;
+        justify-content: space-between;
+      }
+    
+    .payment-component__form-row .payment-component__form-label {
+    margin-right: 1rem;
+    width: auto;
+    }
+    
+    .payment-component__form-button {
+        margin-top: 24px;
+        margin-left: 29rem;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        width: 15%;
+        background-color: #0077c5;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+      }
+    
+      .payment-component__form-button:hover {
+        background-color: #005ea3;
+      }
+
+      .payment-component__points-explanation {
+        display: inline-block;
+        margin-left: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 3px 6px;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        right: -120%;
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        z-index: 9999;
+      }
