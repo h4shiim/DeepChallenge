@@ -1,3 +1,82 @@
-.home{
-    color: black;
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  background-color: #4caf50;
+}
+
+.onlineAvatar {
+  width: 20px;
+  height: 20px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.offlineAvatar {
+  width: 20px;
+  height: 20px;
+  background-color: #f44336;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.textField {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.saveButton {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.saveButton:hover {
+  background-color: #388e3c;
+}
+
+.cancelButton {
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancelButton:hover {
+  background-color: #c62828;
+}
+
+p.error {
+  color: red;
+  margin-bottom: 10px;
 }
