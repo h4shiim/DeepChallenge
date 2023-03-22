@@ -37,7 +37,7 @@ const PaymentComponent = () => {
 
   return (
     <div className="payment-component">
-        <BackgroundVideo />
+        {/* <BackgroundVideo /> */}
       <h2 className="payment-component__title">Choose your plan</h2>
       <div className="payment-component__plans">
         <div className={`payment-component__plan ${selectedPlan === 'basic' ? 'selected' : ''}`}>

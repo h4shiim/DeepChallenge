@@ -3,6 +3,8 @@
   box-shadow: 0px 6px 11px 6px rgb(24 24 24 / 140%);
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   padding: 0 20px;
+  font-size: 13px;
+  font-weight: bold;
 }
 .logoImg{
   width: auto;
@@ -14,17 +16,20 @@
   font-family: 'Sofia Sans Condensed', sans-serif;
 }
 .nav-link {
-  color: #bcb9b9 !important;
+  color: #ffffff !important;
   font-family: 'Roboto', sans-serif;
   font-size: 1.1rem;
   transition: color 0.3s ease-in-out;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 37px rgb(168 78 78);
   /* margin-right: 1rem; */
   padding: 10px;
   border-radius: 5px;
-  margin-left: 4rem;
+  margin-left: 5rem;
 }
-
+.nav-link a{
+  font-size: 10px;
+  
+}
 .nav-link:hover,
 .nav-link.active {
   color: #fff !important;

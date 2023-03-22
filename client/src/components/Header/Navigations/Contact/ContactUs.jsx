@@ -13,24 +13,35 @@ function ContactUs() {
   };
 
   return (
-    <div className="contact-us-container">
-      <BackgroundVideo />
-      <h1 className="contact-us-heading">Contact Us</h1>
-      <form onSubmit={handleSubmit} className="contact-us-form">
-        <label className="contact-us-label">
-          Name:
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="contact-us-input" />
-        </label>
-        <label className="contact-us-label">
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="contact-us-input" />
-        </label>
-        <label className="contact-us-label">
-          Message:
-          <textarea value={message} onChange={(e) => setMessage(e.target.value)} className="contact-us-textarea" />
-        </label>
-        <button type="submit" className="contact-us-submit-btn">Submit</button>
-      </form>
+    <div className='c-body'>
+      <h3 className='contact-heading'>Want to reach us?</h3>
+    <div class="contact-us-container">
+    <form class="form-container">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="first-name">First name</label>
+          <input type="text" class="form-control" id="first-name" required />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="last-name">Last name</label>
+          <input type="text" class="form-control" id="last-name" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" class="form-control" id="phone" required /> 
+      </div>
+      <div class="form-group">
+        <label for="additional-info">Additional information</label>
+        <textarea class="form-control" id="additional-info" rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Send</button>
+    </form>
+  </div>
     </div>
   );
 }

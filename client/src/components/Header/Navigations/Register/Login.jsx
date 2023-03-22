@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Grid, Link, IconButton, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Facebook, GitHub, Google } from '@material-ui/icons';
+import { Facebook, GitHub, Google, LinkedIn } from '@material-ui/icons';
 import BackgroundVideo from '../Home/backgroundVideo';
 import axios from 'axios';
 import "./Login.css"
@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   formContainer: {
-    background: '#ffffffa8',
+    backgroundImage: 'rgb(255, 255, 255)',
     // opacity: '0.6',
     borderRadius: '20px',
     padding: theme.spacing(4),
-    boxShadow: '1px 8px 171px rgb(180 184 185 / 70%)',
+    boxShadow: '0px 0px 20px 7px rgb(102 102 102 / 71%)',
   },
   submitButton: {
     marginTop: theme.spacing(2),
@@ -84,12 +84,12 @@ const Login = () => {
   };
 
   return (
+    <div className='bg'>
     <div className={classes.container}>
-      <BackgroundVideo />
       <form className={classes.formContainer} onSubmit={handleSubmit} >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-          <BackgroundVideo />
+          {/* <BackgroundVideo /> */}
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -140,12 +140,16 @@ const Login = () => {
 <IconButton className={classes.socialIcon}>
 <Facebook />
 </IconButton>
+<IconButton className={classes.socialIcon}>
+<LinkedIn />
+</IconButton>
 </Grid>
 </Grid>
 </div>
 </Grid>
 </Grid>
 </form>
+</div>
 </div>
 );
 };

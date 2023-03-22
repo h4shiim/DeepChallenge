@@ -54,7 +54,7 @@ const Register = () => {
 
   return (
     <div className='register-container'>
-      <BackgroundVideo />
+      {/* <BackgroundVideo /> */}
       <form className="register-form" onSubmit={handleSubmit}>
         <div className="register-input-group">
           <TextField
