@@ -15,15 +15,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserProfileHeader({ userName, onlineStatus, points, handleLogout }) {
+export default function UserProfileHeader({ username, onlineStatus, points, handleLogout }) {
   const classes = useStyles();
-
+  console.log("UserName:", username);
+  console.log("OnlineStatus:", onlineStatus);
+  console.log("Points:", points);
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            {userName}'s Profile
+            {username}'s Profile
           </Typography>
           <Badge badgeContent={points} color="primary">
             <Person />
@@ -33,7 +35,7 @@ export default function UserProfileHeader({ userName, onlineStatus, points, hand
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Typography variant="h6" align="center">{userName} is {onlineStatus ? 'online' : 'offline'}</Typography>
+      <Typography variant="h6" align="center">{username} is {onlineStatus ? 'online' : 'offline'}</Typography>
     </div>
   );
 }

@@ -23,11 +23,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserProfile() {
   const classes = useStyles();
-  const [userData, setUserData] = useState({});
+  const [userData, setuserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
+  const [onlineStatus, setOnlineStatus] = useState('false');
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -35,12 +36,14 @@ export default function UserProfile() {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(response => {
-      setUserData(response.data);
-      setName(response.data.name);
-      setEmail(response.data.email);
-      setBio(response.data.bio);
+      setuserData(response.data);
+      setUsername(response.data?.username);
+      setEmail(response.data?.email);
+      setBio(response.data?.bio);
     })
     .catch(error => console.log(error));
+    
+    
   }, []);
 
   function handleLogout() {
@@ -54,18 +57,18 @@ export default function UserProfile() {
   }
 
   function handleSave() {
-    axios.put('http://localhost:4000/api/user', { name, email, bio })
+    axios.put('http://localhost:4000/api/user', { username, email, bio })
       .then(response => {
-        setUserData(response.data);
+        setuserData(response.data);
         setIsEditing(false);
       })
       .catch(error => console.error(error));
   }
 
   function handleCancel() {
-    setName(userData.name);
-    setEmail(userData.email);
-    setBio(userData.bio);
+    setUsername(userData?.username);
+    setEmail(userData?.email);
+    setBio(userData?.bio);
     setIsEditing(false);
   }
   
@@ -73,21 +76,21 @@ export default function UserProfile() {
   return (
     <div className={classes.root}>
       <UserProfileHeader
-        userName={userData.name}
-        onlineStatus={userData.online}
-        points={userData.points}
+        username={userData?.username}
+        onlineStatus={userData?.online}
+        points={userData?.points}
         handleLogout={handleLogout}
       />
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item>
-          <Avatar alt={userData.name} src={userData.avatar} className={classes.avatar} />
+          <Avatar alt={userData?.username} src={userData?.avatar} className={classes.avatar} />
         </Grid>
         <Grid item>
-          <Typography variant="h4" component="h1">{userData.name}</Typography>
-          <Typography variant="subtitle1">{userData.email}</Typography>
+          <Typography variant="h4" component="h1">{userData?.username}</Typography>
+          <Typography variant="subtitle1">{userData?.email}</Typography>
           {isEditing ? (
             <>
-              <TextField label="Name" value={name} onChange={event => setName(event.target.value)} />
+              <TextField label="Username" value={username} onChange={event => setUsername(event.target.value)} />
               <TextField label="Email" value={email} onChange={event => setEmail(event.target.value)} />
               <TextField label="Bio" value={bio} onChange={event => setBio(event.target.value)} />
               <Button color="primary" variant="contained" className={classes.saveButton} onClick={handleSave}>Save</Button>
@@ -95,9 +98,11 @@ export default function UserProfile() {
             </>
           ) : (
             <>
-              <Typography variant="subtitle1">{userData.bio}</Typography>
+              <Typography variant="subtitle1">{userData?.bio}</Typography>
               <Button color="primary" variant="contained" className={classes.editButton} onClick={handleEdit}>
                 <Edit />
+               
+
                 Edit Profile
               </Button>
             </>
