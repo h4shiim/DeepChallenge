@@ -30,14 +30,17 @@ export default function UserProfile() {
   const [bio, setBio] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/user')
-      .then(response => {
-        setUserData(response.data);
-        setName(response.data.name);
-        setEmail(response.data.email);
-        setBio(response.data.bio);
-      })
-      .catch(error => console.error(error));
+    const token = sessionStorage.getItem('token');
+    axios.get('http://localhost:4000/api/user', {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then(response => {
+      setUserData(response.data);
+      setName(response.data.name);
+      setEmail(response.data.email);
+      setBio(response.data.bio);
+    })
+    .catch(error => console.log(error));
   }, []);
 
   function handleLogout() {
@@ -51,7 +54,7 @@ export default function UserProfile() {
   }
 
   function handleSave() {
-    axios.put('/api/user', { name, email, bio })
+    axios.put('http://localhost:4000/api/user', { name, email, bio })
       .then(response => {
         setUserData(response.data);
         setIsEditing(false);
@@ -65,6 +68,7 @@ export default function UserProfile() {
     setBio(userData.bio);
     setIsEditing(false);
   }
+  
 
   return (
     <div className={classes.root}>
@@ -74,7 +78,7 @@ export default function UserProfile() {
         points={userData.points}
         handleLogout={handleLogout}
       />
-      <Grid container spacing={2} justify="center" alignItems="center">
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item>
           <Avatar alt={userData.name} src={userData.avatar} className={classes.avatar} />
         </Grid>

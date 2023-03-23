@@ -10,6 +10,9 @@ exports.getProfile = async (req, res) => {
     // If user is found, send back their details as a JSON response
     res.json({
       id: user._id,
+      name: user.name,
+      onine: user.online,
+      bio: user.bio,
       username: user.username,
       email: user.email,
       points: user.points, // add points to the response
