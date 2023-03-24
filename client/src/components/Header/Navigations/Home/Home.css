@@ -55,7 +55,7 @@
   color: #bcb9b9;
   font-weight: bold;
   border-radius: 50%;
-  border: 2px solid #703339;
+  border: 2px solid #47393a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +64,7 @@
 
 .homeList li:hover {
   transform: scale(1.1);
-  border-color: #333;
+  border-color: #5a3333;
   color: #976231;
   cursor: pointer;
 }

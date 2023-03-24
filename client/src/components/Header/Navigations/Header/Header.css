@@ -20,11 +20,14 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1.1rem;
   transition: color 0.3s ease-in-out;
-  text-shadow: 1px 1px 11px rgb(168 78 78);
+  background-color: #3e373876;
+  width: 150px;
+  /* text-shadow: 1px 1px 11px rgb(168 78 78); */
   /* margin-right: 1rem; */
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 30px;
   margin-left: 5rem;
+  text-align: center;
 }
 .nav-link a{
   font-size: 10px;
@@ -100,15 +103,24 @@
   /* margin-left: 22rem; */
   position: absolute;
   left: 90%;
-  
+  width: auto;
 }
 .logout-icon{
   position: absolute;
-  left: 87%
+  left: 87%;
+  width: auto;
 }
+
+
 .contact-icon{
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
 }
+
+/* button{
+  background-color: #28191ccd !important;
+  color: antiquewhite;
+  box-shadow: 0px 1px 10px 1px rgb(99 75 75);
+} */

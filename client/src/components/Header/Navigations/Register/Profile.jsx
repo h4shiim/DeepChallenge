@@ -56,7 +56,7 @@ export default function UserProfile() {
       setBio(response.data?.bio);
       setPoints(response.data?.points);
       setEnrolledCourse(response.data?.enrolledCourse);
-      setShowAdvancedCourses(response.data?.points);
+      setShowAdvancedCourses(response.data?.showAdvancedCourses);
     })
     .catch(error => console.log(error));
     
@@ -106,8 +106,21 @@ export default function UserProfile() {
     setIsEditing(false);
   }
   
+  async function handlePoints(e) {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:4000/api/user/points', {
+        points: points + 1,
+      });
+      setPoints(points + 1);
+    } catch (err) {
+      console.error(err.response.data);
+      setMessage(err.response.data);
+    }
+  }
 
   return (
+    
     <div className="p-bg">
     <div className={classes.root}>
       <UserProfileHeader

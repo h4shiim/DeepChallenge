@@ -50,8 +50,8 @@ const Header = () => {
             {isLoggedIn ? (
               <>
                 <Nav.Link href="/ChooseTrack" className="nav-link">Choose your track</Nav.Link>
-                <Nav.Link href="/Profile" className="nav-link profile-icon"><FontAwesomeIcon icon={faUser} /></Nav.Link>
-                <Nav.Link onClick={handleLogout} className="nav-link logout-icon"><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
+                <Nav.Link href="/Profile" className="profile-icon"><FontAwesomeIcon icon={faUser} /></Nav.Link>
+                <Nav.Link onClick={handleLogout} className="logout-icon"><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
                 
               </>
             ) : (
@@ -60,8 +60,8 @@ const Header = () => {
                 <Nav.Link href="/Login" className="nav-link">Sign in</Nav.Link>
               </>
             )}
+            <Nav.Link href="/ContactUs" className="nav-link">Contact Us</Nav.Link>
             
-            {/* <Nav.Link href="/ContactUs" className="nav-link"><FontAwesomeIcon icon={faAddressCard} style={{ color: 'red' }} size="2x" className="me-2 contact-icon" /></Nav.Link> */}
           </Nav>
           {/* <Form className="d-flex">
             <Form.Control type="search" placeholder="Looking for something?" className="form-control me-2" aria-label="Search" />

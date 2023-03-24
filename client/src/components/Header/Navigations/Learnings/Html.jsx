@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Html.css';
+import jwt_decode from 'jwt-decode';
+
 
 const HTMLContent = [
   {
@@ -60,71 +62,86 @@ const HTMLContent = [
           <h3>Task:</h3>
           <p className="task">{HTMLContent[currentPage].task}</p>
           <p className='w3link'>For more information about {HTMLContent[currentPage].title}, please visit the <a href={HTMLContent[currentPage].link} target="_blank" rel="noreferrer">W3Schools page</a> for this topic.</p>
-
         </div>
       );
     };
     
     const Html = () => {
       const [currentPage, setCurrentPage] = useState(0);
+      const [points, setPoints] = useState(0);
     
       const handlePageClick = (page) => {
         setCurrentPage(page);
       };
     
-      const pageLinks = [];
-      for (let i = 0; i < HTMLContent.length; i++) {
-        const isActive = currentPage === i ? 'active' : '';
-        pageLinks.push(
-          <li className={isActive} key={i}>
-            <a href="#" onClick={() => handlePageClick(i)}>
-              {i + 1}
-            </a>
-          </li>
-        );
-      }
 
 
-        const [points, setPoints] = useState(0);
-        const handleButtonClick = () => {
-          setPoints(points + 1);
-        };
+      const handlePoints = async () => {
+        try {
+          const token = sessionStorage.getItem('token');
+          if (!token) {
+            // Handle the case where the user is not logged in
+            return;
+          }
+          const decodedToken = jwt_decode(token);
+          const userId = decodedToken.userId;
+          const response = await fetch(`http://localhost:4000/api/points/${userId}`, {
+            method: "PUT", // Change to HTTP PUT
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ value: 10 }),
+          });
+          const data = await response.json();
+          setPoints(data.points);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      
+      
     
       return (
         <div className="html-container">
           <Page currentPage={currentPage} />
-
-
+    
           <div className="points-bar-container">
-      <div className="points-bar">
-        <div className="points-earned" style={{ width: `${points}%` }}>
-          <span className="points-count">Total points: {points}</span>
-        </div>
-      </div>
-      <button className="add-point-button" onClick={handleButtonClick}>
-        Submit
-      </button>
-    </div>
-
-          
+            <div className="points-bar">
+              <div className="points-earned" style={{ width: `${points}%` }}>
+                <span className="points-count">Total points: {points}</span>
+              </div>
+            </div>
+            <button className="add-point-button" onClick={handlePoints}>
+              Submit
+            </button>
+          </div>
+    
           <nav aria-label="Page navigation example">
             <ul className="pagination">
               <li className={currentPage === 0 ? 'disabled' : ''}>
-                <a href="#" onClick={() => handlePageClick(currentPage - 1)} aria-label="Previous">
+                <a href="#" onClick={(e) => {e.preventDefault(); handlePageClick(currentPage - 1);}} aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
-              {pageLinks}
+              {[...Array(HTMLContent.length)].map((_, i) => {
+                const isActive = currentPage === i ? 'active' : '';
+                return (
+                  <li className={isActive} key={i}>
+                    <a href="#" onClick={(e) => {e.preventDefault(); handlePageClick(i);}}>
+                      {i + 1}
+                    </a>
+                  </li>
+                );
+              })}
               <li className={currentPage === HTMLContent.length - 1 ? 'disabled' : ''}>
-                <a href="#" onClick={() => handlePageClick(currentPage + 1)} aria-label="Next">
+                <a href="#" onClick={(e) => {e.preventDefault(); handlePageClick(currentPage + 1);}} aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                 </a>
               </li>
             </ul>
           </nav>
-          
         </div>
-        
       );
     };
     

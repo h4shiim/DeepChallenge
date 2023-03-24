@@ -48,7 +48,7 @@
 
 .form-outline input:focus, .form-outline textarea:focus {
   outline: none;
-  border-bottom: 2px solid #4285f4;
+  /* border-bottom: 2px solid #4285f4; */
 }
 
 .form-outline label {
@@ -66,7 +66,7 @@
 .form-outline input:focus + label, .form-outline textarea:focus + label {
   top: 0;
   font-size: 14px;
-  color: #4285f4;
+  /* color: #4285f4; */
 }
 
 .form-check-input[type="checkbox"] {
@@ -83,7 +83,7 @@
 }
 
 .btn-primary {
-  background-color: #4285f4;
+  /* background-color: #4285f4; */
   color: #fff;
   font-size: 16px;
   font-weight: 600;
@@ -93,9 +93,9 @@
   transition: all 0.3s ease-in-out;
 }
 
-.btn-primary:hover {
+/* .btn-primary:hover {
   background-color: #3367d6;
-}
+} */
 
 @media screen and (max-width: 767px) {
   .contact-us-container {
