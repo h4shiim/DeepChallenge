@@ -9,11 +9,13 @@ const Home = () => {
       <BackgroundVideo />
       
       <h1 className="homeTitle">Welcome to Web Development Interactive Learning</h1>
-      <p className="homeDescription">
+      <div className="box">
+      <p className="homeDescription advance">
         Our website is designed to help you learn web development in an interactive and engaging way. 
         With a focus on hands-on coding exercises, you'll be able to put your knowledge into practice 
         and build real projects.
       </p>
+      </div>
       <h2 className="homeSubtitle">What You'll Learn</h2>
       <ul className="homeList">
         <li>HTML, CSS, and JavaScript basics</li>

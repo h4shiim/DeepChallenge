@@ -9,6 +9,7 @@ const loginRoutes = require('./routes/loginRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const registerRoutes = require('./routes/registerRoutes');
 const userRoutes = require('./routes/userRoutes');
+
 require('dotenv').config();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'mysupersecretkey123';
@@ -35,6 +36,7 @@ app.use('/api/register', registerRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/user', userRoutes);
+
 
 
 // Start the server

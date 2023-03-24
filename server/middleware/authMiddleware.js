@@ -15,12 +15,17 @@ const authenticateToken = async (req, res, next) => {
 
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(payload._id);
+
     if (!user) {
       return res.status(401).json({ error: 'Invalid token' });
     }
-    
+
+    // Set online status of the user
+    user.online = true;
+    await user.save();
+
     // Set req.user to the authenticated user
-    req.user = user;
+    req.user = { id: user._id, ...user._doc };
     next();
   } catch (err) {
     console.error(err);

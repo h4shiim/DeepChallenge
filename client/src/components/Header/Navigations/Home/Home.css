@@ -4,6 +4,7 @@
   align-items: center;
   padding: 80px;
   /* background-image: url(body-bg.png); */
+  /* background-color: snow; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,9 +35,11 @@
   width: 100%;
 }
 
+
+
 .homeList {
   list-style: none;
-  font-size: 18px;
+  font-size: 13px;
   margin-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
