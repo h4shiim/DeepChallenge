@@ -4,7 +4,6 @@ import axios from 'axios';
 import UserProfileHeader from './UserProfileHeader';
 import './Profile.css';
 import { Link as RouterLink } from 'react-router-dom';
-import Html from "../Learnings/Html.jsx"
 const HtmlLink = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref} to="/tracks" {...props} />
 ));
@@ -28,39 +27,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserProfile(props) {
-  const classes = useStyles();
-  const [userData, setuserData] = useState({});
+export default function UserProfile() {
+  const classNamees = useStyles();
+  const [userData, setUserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
   const [onlineStatus, setOnlineStatus] = useState(false);
   const [message, setMessage] = useState('');
-  const [points, setPoints] = useState(props.points);
+  const [points, setPoints] = useState('0');
   const [enrolledCourse, setEnrolledCourse] = useState('');
   const [showAdvancedCourses, setShowAdvancedCourses] = useState(false);
 
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    
     axios.get('http://localhost:4000/api/user', {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(response => {
-      setuserData(response.data);
+      setUserData(response.data);
       setUsername(response.data?.username);
       setEmail(response.data?.email);
       setBio(response.data?.bio);
-      setPoints(props.points);
       setEnrolledCourse(response.data?.enrolledCourse);
       setShowAdvancedCourses(response.data?.showAdvancedCourses);
+  
+      // fetch the user points from the server
+      axios.get('http://localhost:4000/api/points', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(pointsResponse => {
+        if (pointsResponse.data) {
+          console.log(pointsResponse);
+          
+          setPoints(pointsResponse.data);
+          console.log(points);
+        }
+      })
+      .catch(error => console.log(error));
     })
     .catch(error => console.log(error));
-    
-    
   }, []);
+  
+  
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   function handleLogout() {
@@ -82,7 +93,7 @@ export default function UserProfile(props) {
         email,
         bio,
       });
-      setuserData({
+      setUserData({
         ...userData,
         username,
         email,
@@ -109,21 +120,21 @@ export default function UserProfile(props) {
   return (
     
     <div className="p-bg">
-    <div className={classes.root}>
+    <div className={classNamees.root}>
       <UserProfileHeader
         username={userData?.username}
         onlineStatus={userData?.online}
-        points={userData?.points}
+        points={points}
         handleLogout={handleLogout}
       />
-      <div class="profile-container">
-  <div class="avatar-container">
-    <img src={userData?.avatar} alt={userData?.username} class="avatar" />
+      <div className="profile-container">
+  <div className="avatar-container">
+    <img src={userData?.avatar} alt={userData?.username} className="avatar" />
   </div>
-  <div class="profile-info">
-    <h2 class="username">{userData?.username}</h2>
+  <div className="profile-info">
+    <h2 className="username">{userData?.username}</h2>
     
-    <p class="email">{userData?.email}</p>
+    <p className="email">{userData?.email}</p>
     <div>
             <h5 className='points'>Your Points: {points}</h5>
           </div>
@@ -136,16 +147,16 @@ export default function UserProfile(props) {
         <input type="text" id="email" name="email" value={email} onChange={event => setEmail(event.target.value)} />
         <label for="bio">Bio:</label>
         <textarea id="bio" name="bio" value={bio} onChange={event => setBio(event.target.value)}></textarea>
-        <div class="button-container">
-          <button type="button" class="p-save-button" onClick={handleSave}>Save</button>
-          <button type="button" class="p-cancel-button" onClick={handleCancel}>Cancel</button>
+        <div className="button-container">
+          <button type="button" className="p-save-button" onClick={handleSave}>Save</button>
+          <button type="button" className="p-cancel-button" onClick={handleCancel}>Cancel</button>
         </div>
       </form>
     ) : (
       <>
-        <p class="bio">{userData?.bio}</p>
-        <button type="button" class="p-edit-button" onClick={handleEdit}>
-          <i class="fas fa-edit"></i>
+        <p className="bio">{userData?.bio}</p>
+        <button type="button" className="p-edit-button" onClick={handleEdit}>
+          <i className="fas fa-edit"></i>
           Edit Profile
         </button>
       </>
@@ -155,14 +166,14 @@ export default function UserProfile(props) {
 
 
 
-<div class="boxes-container">
-  <div class="p-box">
-    <h3 class="p-box-title">Enrolled in: {enrolledCourse}</h3>
-    <a href="/tracks" class="p-box-btn">Web Development Course</a>
+<div className="boxes-container">
+  <div className="p-box">
+    <h3 className="p-box-title">Enrolled in: {enrolledCourse}</h3>
+    <a href="/tracks" className="p-box-btn">Web Development Course</a>
   </div>
-  <div class="p-box">
-    <h3 class="p-box-title">Looking for advanced courses?</h3>
-    <a href="/Payment" class="p-box-btn">Go to Plans Page</a>
+  <div className="p-box">
+    <h3 className="p-box-title">Looking for advanced courses?</h3>
+    <a href="/Payment" className="p-box-btn">Go to Plans Page</a>
   </div>
 </div>
 

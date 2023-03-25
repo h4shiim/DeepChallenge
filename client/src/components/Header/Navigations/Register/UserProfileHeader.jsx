@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton, Badge } from '@material-ui/core';
 import { ExitToApp, Person } from '@material-ui/icons';
+import Profile from "./Profile.jsx"
 import "./UserProfileHeader.css"
 
 const useStyles = makeStyles((theme) => ({

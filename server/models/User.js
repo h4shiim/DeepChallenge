@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  points: {
+    type: Number,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

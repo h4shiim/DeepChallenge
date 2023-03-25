@@ -17,6 +17,7 @@ router.put('/', auth, async (req, res) => {
         user.username = username || user.username;
         user.email = email || user.email;
         user.bio = bio || user.bio;
+        user.points = points || user.points;
 
 
   

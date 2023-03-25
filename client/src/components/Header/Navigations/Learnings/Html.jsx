@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Html.css';
 import jwt_decode from 'jwt-decode';
+import Profile from "../Register/Profile.jsx"
 
 
 const HTMLContent = [
@@ -66,7 +67,7 @@ const HTMLContent = [
       );
     };
     
-    const Html = () => {
+    const Html = (props) => {
       const [currentPage, setCurrentPage] = useState(0);
       const [points, setPoints] = useState(0);
     
@@ -117,7 +118,7 @@ const HTMLContent = [
           <div className="points-bar-container">
             <div className="points-bar">
               <div className="points-earned" style={{ width: `${points}%` }}>
-                <span className="points-count">Total points: {points}</span>
+                <span className="points-count">Total points: {props.points}</span>
               </div>
             </div>
             <button className="add-point-button" onClick={handlePoints}>
