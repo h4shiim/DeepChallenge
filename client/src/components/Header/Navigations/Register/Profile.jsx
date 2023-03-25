@@ -4,6 +4,7 @@ import axios from 'axios';
 import UserProfileHeader from './UserProfileHeader';
 import './Profile.css';
 import { Link as RouterLink } from 'react-router-dom';
+
 const HtmlLink = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref} to="/tracks" {...props} />
 ));
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UserProfile() {
+  
   const classNamees = useStyles();
   const [userData, setUserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -39,6 +41,7 @@ export default function UserProfile() {
   const [points, setPoints] = useState('0');
   const [enrolledCourse, setEnrolledCourse] = useState('');
   const [showAdvancedCourses, setShowAdvancedCourses] = useState(false);
+
 
 
   useEffect(() => {
@@ -120,6 +123,7 @@ export default function UserProfile() {
   return (
     
     <div className="p-bg">
+      
     <div className={classNamees.root}>
       <UserProfileHeader
         username={userData?.username}
@@ -159,6 +163,7 @@ export default function UserProfile() {
           <i className="fas fa-edit"></i>
           Edit Profile
         </button>
+        
       </>
     )}
   </div>
