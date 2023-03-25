@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Typography, Button, Grid, TextField } from '@material-ui/core';
-import { Edit } from '@material-ui/icons';
 import axios from 'axios';
 import UserProfileHeader from './UserProfileHeader';
 import './Profile.css';
 import { Link as RouterLink } from 'react-router-dom';
+import Html from "../Learnings/Html.jsx"
 const HtmlLink = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref} to="/tracks" {...props} />
 ));
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserProfile() {
+export default function UserProfile(props) {
   const classes = useStyles();
   const [userData, setuserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -38,7 +37,7 @@ export default function UserProfile() {
   const [bio, setBio] = useState('');
   const [onlineStatus, setOnlineStatus] = useState(false);
   const [message, setMessage] = useState('');
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(props.points);
   const [enrolledCourse, setEnrolledCourse] = useState('');
   const [showAdvancedCourses, setShowAdvancedCourses] = useState(false);
 
@@ -54,7 +53,7 @@ export default function UserProfile() {
       setUsername(response.data?.username);
       setEmail(response.data?.email);
       setBio(response.data?.bio);
-      setPoints(response.data?.points);
+      setPoints(props.points);
       setEnrolledCourse(response.data?.enrolledCourse);
       setShowAdvancedCourses(response.data?.showAdvancedCourses);
     })
@@ -106,18 +105,6 @@ export default function UserProfile() {
     setIsEditing(false);
   }
   
-  async function handlePoints(e) {
-    e.preventDefault();
-    try {
-      const res = await axios.post('http://localhost:4000/api/user/points', {
-        points: points + 1,
-      });
-      setPoints(points + 1);
-    } catch (err) {
-      console.error(err.response.data);
-      setMessage(err.response.data);
-    }
-  }
 
   return (
     

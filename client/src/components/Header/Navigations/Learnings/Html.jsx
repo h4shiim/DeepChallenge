@@ -74,8 +74,6 @@ const HTMLContent = [
         setCurrentPage(page);
       };
     
-
-
       const handlePoints = async () => {
         try {
           const token = sessionStorage.getItem('token');
@@ -84,21 +82,31 @@ const HTMLContent = [
             return;
           }
           const decodedToken = jwt_decode(token);
-          const userId = decodedToken.userId;
-          const response = await fetch(`http://localhost:4000/api/points/${userId}`, {
-            method: "PUT", // Change to HTTP PUT
+          const response = await fetch(`http://localhost:4000/api/points/`, {
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ value: 10 }),
           });
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+          }
           const data = await response.json();
-          setPoints(data.points);
+          setPoints(data.value); // Set points to the value of the point object
         } catch (error) {
           console.log(error);
         }
       };
+      
+      
+      
+      
+    
+      
+    
       
       
     
@@ -113,7 +121,7 @@ const HTMLContent = [
               </div>
             </div>
             <button className="add-point-button" onClick={handlePoints}>
-              Submit
+              Add 10 points
             </button>
           </div>
     
@@ -146,5 +154,4 @@ const HTMLContent = [
     };
     
     export default Html;
-    
     
