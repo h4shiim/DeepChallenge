@@ -46,37 +46,38 @@ export default function UserProfile() {
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    axios.get('http://localhost:4000/api/user', {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then(response => {
-      setUserData(response.data);
-      setUsername(response.data?.username);
-      setEmail(response.data?.email);
-      setBio(response.data?.bio);
-      setEnrolledCourse(response.data?.enrolledCourse);
-      setShowAdvancedCourses(response.data?.showAdvancedCourses);
-  
-      // fetch the user points from the server
-      axios.get('http://localhost:4000/api/points', {
+    axios
+      .get('http://localhost:4000/api/user', {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(pointsResponse => {
-        if (pointsResponse.data) {
-          console.log(pointsResponse);
-          
-          setPoints(pointsResponse.data);
-          console.log(points);
-        }
+      .then((response) => {
+        setUserData(response.data);
+        setUsername(response.data?.username);
+        setEmail(response.data?.email);
+        setBio(response.data?.bio);
+        setEnrolledCourse(response.data?.enrolledCourse);
+        setShowAdvancedCourses(response.data?.showAdvancedCourses);
+
+        // fetch the user points from the server
+        axios
+          .get('http://localhost:4000/api/points', {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((pointsResponse) => {
+            if (pointsResponse.data) {
+              console.log(pointsResponse);
+
+              setPoints(pointsResponse.data);
+              console.log(points);
+            }
+          })
+          .catch((error) => console.log(error));
       })
-      .catch(error => console.log(error));
-    })
-    .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }, []);
-  
-  
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   function handleLogout() {
     sessionStorage.removeItem('token');
     setIsLoggedIn(false);
@@ -91,11 +92,20 @@ export default function UserProfile() {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put('http://localhost:4000/api/user', {
-        username,
-        email,
-        bio,
-      });
+      const token = sessionStorage.getItem('token');
+      const res = await axios.put(
+        'http://localhost:4000/api/useredit',
+        {
+          username,
+          email,
+          bio,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setUserData({
         ...userData,
         username,
@@ -110,7 +120,6 @@ export default function UserProfile() {
       setMessage(err.response.data);
     }
   };
-  
 
   function handleCancel() {
     setUsername(userData?.username);

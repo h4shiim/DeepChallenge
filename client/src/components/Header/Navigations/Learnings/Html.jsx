@@ -98,7 +98,7 @@ import HTMLContent from "./HTMLContent.jsx"
               </div>
             </div>
             <button className="add-point-button" onClick={handlePoints}>
-              Add 10 points
+              Submit
             </button>
           </div>
     

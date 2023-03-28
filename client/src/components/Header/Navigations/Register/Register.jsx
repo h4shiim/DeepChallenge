@@ -9,6 +9,8 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +55,7 @@ const Register = () => {
   };
 
   return (
-    <div className='register-container'>
+    <div className='register-container register-popup-container'>
       {/* <BackgroundVideo /> */}
       <form className="register-form" onSubmit={handleSubmit}>
         <div className="register-input-group">

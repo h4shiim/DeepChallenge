@@ -17,6 +17,8 @@ const OnlineIDE = () => {
   </body>
   </html>`);
   const [output, setOutput] = useState('');
+  const [userAnswer, setUserAnswer] = useState('');
+
 
 
 
@@ -36,6 +38,9 @@ const OnlineIDE = () => {
   };
   
 
+
+
+  
   return (
     <div className='track-body' style={{ display: 'flex' }}>
       <div className="learning-tab"style={{ width: '33%', height:'' }}>

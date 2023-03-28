@@ -4,6 +4,7 @@
           title: "HTML Lesson 1: Introduction to HTML",
           content: "HTML stands for HyperText Markup Language and is used to create the structure and content of a web page. HTML uses tags to define the different elements on a page, such as headings, paragraphs, and lists.",
           task: "Create a simple HTML page with a heading, a paragraph, and a list.",
+          solution: "<p>Hello, world!</p>",
           link: "https://www.w3schools.com/html/html_intro.asp"
         },
         {
@@ -11,6 +12,7 @@
           title: "HTML Lesson 2: Creating a Simple HTML Page",
           content: "To create a simple HTML page, you need to start with a basic structure that includes the following tags: <html>, <head>, and <body>. The <html> tag is the root element of the page and contains all the other elements. The <head> section is used for metadata, such as the title of the page, and the <body> section is where you put the actual content of the page.",
           task: "Add a title to your HTML page and a link to an external stylesheet.",
+          solution: "<p>Hello, world!</p>",
           link: "https://www.w3schools.com/html/html_basic.asp"
         },
         {

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/authMiddleware');
+const { authenticateToken } = require('../middleware/authMiddleware');
 const User = require('../models/user');
 // @route   PUT api/user
 // @desc    Update user information
 // @access  Private
-router.put('/', auth, async (req, res) => {
+router.put('/', authenticateToken, async (req, res) => {
     try {
       // Get user information from request body
       const { username, email, bio } = req.body;
@@ -17,8 +17,6 @@ router.put('/', auth, async (req, res) => {
         user.username = username || user.username;
         user.email = email || user.email;
         user.bio = bio || user.bio;
-        user.points = points || user.points;
-
 
   
       // Save updated user information to the database

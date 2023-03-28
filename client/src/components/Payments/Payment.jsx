@@ -36,6 +36,7 @@ const PaymentComponent = () => {
   };
 
   return (
+    <div className='payment-body'>
     <div className="payment-component">
         {/* <BackgroundVideo /> */}
       <h2 className="payment-component__title">Choose your plan</h2>
@@ -170,6 +171,7 @@ const PaymentComponent = () => {
     </label>
     <button type="submit" className="payment-component__form-button">Pay Now</button>
   </form>
+</div>
 </div>
 );
 };
