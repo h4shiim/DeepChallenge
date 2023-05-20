@@ -1,95 +1,74 @@
-import React, { useState, useEffect, useRef } from "react";
-import io from "socket.io-client";
-import "./Challenges.css";
-import "../Home/backgroundVideo"
-import BackgroundVideo from "../Home/backgroundVideo";
+  // client/src/components/Challenge.js
 
-const socket = io("http://localhost:3001"); // Replace with your server URL
+  import React, { useState, useEffect } from 'react';
+  import io from 'socket.io-client';
+  import './Challenges.css'; 
 
-const Challenges = () => {
-  const [task, setTask] = useState("");
-  const [timer, setTimer] = useState(0);
-  const [answer, setAnswer] = useState("");
-  const [result, setResult] = useState("");
+  const socket = io();
 
-  const countdownRef = useRef(null);
+  function Challenge() {
+    const [task, setTask] = useState('');
+    const [userInput, setUserInput] = useState('');
+    const [result, setResult] = useState('');
 
-  useEffect(() => {
-    socket.on("task", (data) => {
-      setTask(data.task);
-      setTimer(data.timer);
-      startCountdown(data.timer);
-    });
+    useEffect(() => {
+      fetchTaskFromServer();
+    }, []);
 
-    socket.on("full", () => {
-      alert("Maximum number of users reached. Please try again later.");
-    });
-
-    socket.on("result", (data) => {
-      setResult(data);
-    });
-
-    return () => {
-      socket.off("task");
-      socket.off("full");
-      socket.off("result");
+    const fetchTaskFromServer = () => {
+      fetch('http://localhost:4000/api/challenge/task')
+        .then((response) => response.json())
+        .then((data) => {
+          setTask(data.task);
+        })
+        .catch((error) => {
+          console.error('Error fetching task:', error);
+        });
     };
-  }, []);
 
-  const startCountdown = (time) => {
-    let remainingTime = time;
-    countdownRef.current = setInterval(() => {
-      remainingTime--;
-      setTimer(remainingTime);
-      if (remainingTime === 0) {
-        clearInterval(countdownRef.current);
-        setTimer(0);
-        setResult({ message: "Time is up! Please try again." });
-      }
-    }, 1000);
-  };
+    const submitAnswer = () => {
+      fetch('http://localhost:4000/api/challenge/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answer: userInput }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setResult(data.result);
+        })
+        .catch((error) => {
+          console.error('Error submitting answer:', error);
+        });
+    };
 
-  const handleAnswerSubmit = () => {
-    clearInterval(countdownRef.current);
-    setTimer(0);
-    console.log("Submitting answer: ", answer);
-    socket.emit("answer", { answer });
-  };
-  
+    useEffect(() => {
+      socket.on('challenge:update', handleChallengeUpdate);
 
+      return () => {
+        socket.off('challenge:update', handleChallengeUpdate);
+      };
+    }, []);
 
-  const handleAnswerChange = (e) => {
-    setAnswer(e.target.value);
-  };
+    const handleChallengeUpdate = (data) => {
+      setResult(data.result);
+    };
 
-  return (
-    <div className="challenges-container">
-      <BackgroundVideo />
-      <div className="task-box">
-        <h2>Task</h2>
-        <p>{task}</p>
+    const handleInputChange = (event) => {
+      setUserInput(event.target.value);
+    };
+
+    const handleSubmit = () => {
+      submitAnswer();
+    };
+
+    return (
+      <div className="challenge-container">
+        <h2>Challenge Task: {task}</h2>
+        <input type="text" value={userInput} onChange={handleInputChange} />
+        <button className="submit-button" onClick={handleSubmit}>Submit</button>
+        <p className="result-text">Result: {result}</p>
       </div>
-      <div className="answer-box">
-        <h2>Answer</h2>
-        <textarea
-          value={answer}
-          onChange={handleAnswerChange}
-          placeholder="Enter your answer here"
-        />
-        <button onClick={handleAnswerSubmit}>Submit</button>
-      </div>
-      <div className="timer-box">
-        {/* <h2>Time Remaining</h2> */}
-        <p>{timer} seconds</p>
-      </div>
-      {result && (
-        <div className="result-box">
-          <h2>Result</h2>
-          <p>{result.message}</p>
-        </div>
-      )}
-    </div>
-  );
-};
+    );
+  }
 
-export default Challenges;
+  export default Challenge;
