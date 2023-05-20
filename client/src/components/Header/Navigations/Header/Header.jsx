@@ -44,23 +44,24 @@ const Header = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="navbar-nav me-auto mb-2 mb-lg-0">
             
-          <Nav.Link href="/Challenges" className="nav-link">Challenges</Nav.Link>
+          
           
 
             {isLoggedIn ? (
               <>
-                <Nav.Link href="/ChooseTrack" className="nav-link">Choose your track</Nav.Link>
+                <Nav.Link href="/ChooseTrack" className="nav-link nav-log">Choose your track</Nav.Link>
                 <Nav.Link href="/Profile" className="profile-icon"><FontAwesomeIcon icon={faUser} /></Nav.Link>
                 <Nav.Link onClick={handleLogout} className="logout-icon"><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
-                
+                <Nav.Link href="/Challenges" className="nav-link nav-log">Challenges</Nav.Link>
+                <Nav.Link href="/ContactUs" className="nav-link nav-log">Contact Us</Nav.Link>
               </>
             ) : (
               <>
-                <Nav.Link href="/Register" className="nav-link">Register</Nav.Link>
-                <Nav.Link href="/Login" className="nav-link">Sign in</Nav.Link>
+                <Nav.Link href="/Register" className="nav-link nav-reg">Register</Nav.Link>
+                <Nav.Link href="/Login" className="nav-link nav-reg">Sign in</Nav.Link>
               </>
             )}
-            <Nav.Link href="/ContactUs" className="nav-link">Contact Us</Nav.Link>
+            
             
           </Nav>
           {/* <Form className="d-flex">

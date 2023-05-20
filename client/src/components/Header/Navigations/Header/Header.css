@@ -29,6 +29,14 @@
   margin-left: 5rem;
   text-align: center;
 }
+.nav-reg{
+  position: relative;
+  left: 80%;
+}
+.nav-log{
+  position: relative;
+  left: 32%;
+}
 .nav-link a{
   font-size: 10px;
   
