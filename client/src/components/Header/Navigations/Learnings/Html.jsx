@@ -11,8 +11,15 @@ import HTMLContent from "./HTMLContent.jsx"
       const [points, setPoints] = useState('0');
     
       const handlePageClick = (page) => {
-        setCurrentPage(page);
+        if (page >= HTMLContent.length) {
+          setCurrentPage(0); // If the page exceeds the number of pages, set currentPage to 0
+        } else if (page < 0) {
+          setCurrentPage(HTMLContent.length - 1); // If the page is less than 0, set currentPage to the last page
+        } else {
+          setCurrentPage(page); // Otherwise, set currentPage to the selected page
+        }
       };
+      
 
       const handleTaskComplete = () => {
         setCompletedTask(true); // update the state variable to indicate that the user has completed the task
