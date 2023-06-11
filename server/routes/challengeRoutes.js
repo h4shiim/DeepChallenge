@@ -1,12 +1,10 @@
 const express = require('express');
 const challengeController = require('../controllers/challengeController');
-
+const { authenticateToken } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-// Route for fetching the task
 router.get('/task', challengeController.getTask);
-
-// Route for submitting the answer
-router.post('/submit', challengeController.submitAnswer);
+router.get('/users', authenticateToken, challengeController.getUsers);
+router.post('/submit', challengeController.submitAnswer); // Add authenticateToken middleware to secure the endpoint
 
 module.exports = router;

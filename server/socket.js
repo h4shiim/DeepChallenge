@@ -1,7 +1,8 @@
 const socketio = require('socket.io');
 const mongoose = require('mongoose');
 
-const io = socketio();
+let socketServer;
+const connectedSockets = []; // Array to store connected sockets
 
 const connectDB = async () => {
   try {
@@ -15,14 +16,47 @@ const connectDB = async () => {
   }
 };
 
-connectDB();
-
-io.on('connection', (socket) => {
-  console.log('New connection:', socket.id);
-
-  socket.on('challenge:submit', (data) => {
-    io.emit('challenge:update', { result: 'Winner!' });
+const initSocketServer = (server) => {
+  socketServer = socketio(server, {
+    cors: {
+      origin: '*',
+    },
   });
-});
 
-module.exports = io;
+  connectDB();
+
+  socketServer.on('connection', (socket) => {
+    console.log('New connection:', socket.id);
+
+    // Add the socket to the connectedSockets array
+    connectedSockets.push(socket);
+
+    socket.on('disconnect', () => {
+      console.log('Disconnected:', socket.id);
+      // Remove the socket from the connectedSockets array when disconnected
+      const index = connectedSockets.indexOf(socket);
+      if (index !== -1) {
+        connectedSockets.splice(index, 1);
+      }
+    });
+
+    socket.on('challenge:submit', ({ answer }) => {
+      // Emit challenge:update event to all connected sockets
+      connectedSockets.forEach((connectedSocket) => {
+        connectedSocket.emit('challenge:update', { result: 'Winner!', answer });
+      });
+    });
+    
+  });
+
+  return socketServer;
+};
+
+const getSocketServer = () => {
+  return socketServer;
+};
+
+module.exports = {
+  initSocketServer,
+  getSocketServer,
+};

@@ -2,13 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const socketServer = require('./socket');
+const challengeController = require('./controllers/challengeController');
 
 const app = express();
 
 const user = require('./models/user');
 const jwt = require('jsonwebtoken');
-// const authRoutes = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 const registerRoutes = require('./routes/registerRoutes');
@@ -32,24 +31,28 @@ mongoose.connect('mongodb://127.0.0.1:27017/logindb', {
   useUnifiedTopology: true,
 });
 
-// mongoose.connection.on('connected', () => {
-//   console.log('Connected to MongoDB');
-// });
+mongoose.connection.on('connected', () => {
+  console.log('Connected to MongoDB');
+});
 
-// Handle registration requests
 app.use('/api/register', registerRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/points', pointRoutes);
 app.use('/api/useredit', updateUser);
-app.use('/api/challenge', challengeRoutes);
+app.use('/api', challengeRoutes);
+app.use('/api/logout', profileRoutes);
 
+app.use((req, res, next) => {
+  console.log('Request URL:', req.url);
+  next();
+});
 
 const server = app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
-socketServer.attach(server);
+challengeController.initializeSocketServer(server);
 
 module.exports = app;

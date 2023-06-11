@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from "../Header/logo.png"
+import axios from 'axios';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSignOutAlt, faContactCard, faFileContract, faContactBook, faExclamationTriangle, faAddressBook, faAddressCard } from '@fortawesome/free-solid-svg-icons';
@@ -25,13 +26,31 @@ const Header = () => {
     }
   }, []);
 
-  const handleLogout = () => {
-    // remove token from session storage and set isLoggedIn to false
-    sessionStorage.removeItem('token');
-    setIsLoggedIn(false);
-    // redirect to login page
-    window.location.href = '/login';
-  };
+ function handleLogout() {
+    const token = sessionStorage.getItem('token');
+    
+    // Update the online status of the user to false
+    axios
+      .post(
+        'http://localhost:4000/api/logout',
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        sessionStorage.removeItem('token');
+        setIsLoggedIn(false);
+        // redirect to login page
+        window.location.href = '/login';
+      })
+      .catch((error) => {
+        console.error('Error updating online status:', error);
+        // Handle the error accordingly
+      });
+  }
 
   return (
     <Navbar expand="lg" className="navbar">

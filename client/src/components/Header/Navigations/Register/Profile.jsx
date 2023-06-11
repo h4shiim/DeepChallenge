@@ -79,11 +79,32 @@ export default function UserProfile() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function handleLogout() {
-    sessionStorage.removeItem('token');
-    setIsLoggedIn(false);
-    // redirect to login page
-    window.location.href = '/login';
+    const token = sessionStorage.getItem('token');
+    
+    // Update the online status of the user to false
+    axios
+      .post(
+        'http://localhost:4000/api/logout',
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        sessionStorage.removeItem('token');
+        setIsLoggedIn(false);
+        // redirect to login page
+        window.location.href = '/login';
+      })
+      .catch((error) => {
+        console.error('Error updating online status:', error);
+        // Handle the error accordingly
+      });
   }
+  
+  
 
   function handleEdit() {
     setIsEditing(true);

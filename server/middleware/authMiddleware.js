@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
-
 const authenticateToken = async (req, res, next) => {
   try {
     const authorizationHeader = req.headers.authorization;
@@ -14,23 +13,27 @@ const authenticateToken = async (req, res, next) => {
       return res.status(401).json({ error: 'Invalid token' });
     }
 
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(payload._id);
+    try {
+      const payload = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findById(payload._id);
 
-    if (!user) {
+      if (!user) {
+        return res.status(401).json({ error: 'Invalid token' });
+      }
+
+      // Set online status of the user
+      user.online = true;
+      await user.save();
+
+      // Set req.user to the authenticated user
+      req.user = { id: user._id, ...user._doc };
+      next();
+    } catch (err) {
       return res.status(401).json({ error: 'Invalid token' });
     }
-
-    // Set online status of the user
-    user.online = true;
-    await user.save();
-
-    // Set req.user to the authenticated user
-    req.user = { id: user._id, ...user._doc };
-    next();
   } catch (err) {
     console.error(err);
-    res.status(401).json({ error: 'Invalid token' });
+    res.status(500).json({ error: 'Server error' });
   }
 };
 

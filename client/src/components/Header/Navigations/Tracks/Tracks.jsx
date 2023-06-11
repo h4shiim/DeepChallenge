@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Html from '../Learnings/Html'
 import './Tracks.css'
-import Editor from '@monaco-editor/react';
+import Editor, { loader } from '@monaco-editor/react';
+
+
+
+
+
+
 
 const OnlineIDE = () => {
   const [code, setCode] = useState(`<!DOCTYPE html>
@@ -38,7 +44,11 @@ const OnlineIDE = () => {
   };
   
 
-
+  loader.config({
+    paths: {
+      vs: '/monaco-editor/min/vs'
+    }
+  });
 
   
   return (

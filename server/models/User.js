@@ -40,6 +40,18 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find({ online: true }).select('username');
+    console.log('Fetched users:', users); // Add this line to check the fetched users
+    const usernames = users.map((user) => user.username);
+    console.log('Fetched usernames:', usernames); // Add this line to check the usernames array
+    res.json({ users: usernames });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 
 /// Hash the password before saving it to the database
