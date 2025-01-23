@@ -6,7 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build",
-        "installCommand": "cd client && npm install --legacy-peer-deps",
+        "installCommand": "cd client && npm install --legacy-peer-deps --force",
         "buildCommand": "cd client && npm run build"
       }
     }
