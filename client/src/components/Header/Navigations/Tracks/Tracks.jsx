@@ -44,12 +44,6 @@ const OnlineIDE = () => {
   };
   
 
-  loader.config({
-    paths: {
-      vs: '/monaco-editor/min/vs'
-    }
-  });
-
   
   return (
     <div className='track-body' style={{ display: 'flex' }}>

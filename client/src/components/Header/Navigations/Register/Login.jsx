@@ -1,51 +1,9 @@
 import React, { useState } from 'react';
-import { TextField, Button, Grid, Link, IconButton, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Facebook, GitHub, Google, LinkedIn } from '@material-ui/icons';
 import BackgroundVideo from '../Home/backgroundVideo';
 import axios from 'axios';
 import "./Login.css"
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '50%',
-    marginLeft: '25%',
-    minHeight: '100vh',
-    padding: theme.spacing(2),
-  },
-  formContainer: {
-    backgroundImage: 'rgb(255, 255, 255)',
-    // opacity: '0.6',
-    borderRadius: '20px',
-    padding: theme.spacing(4),
-    boxShadow: '0px 0px 20px 7px rgb(102 102 102 / 71%)',
-  },
-  submitButton: {
-    marginTop: theme.spacing(2),
-    borderRadius: '25px',
-    textTransform: 'none',
-    padding: theme.spacing(1, 3),
-    background: '#3f51b5',
-    color: '#fff',
-    '&:hover': {
-      background: '#3f51b5',
-      opacity: '0.8',
-    },
-  },
-  socialIconsContainer: {
-    marginTop: theme.spacing(2),
-    textAlign: 'center',
-  },
-  socialIcon: {
-    margin: theme.spacing(0, 2),
-  },
-}));
-
 const Login = () => {
-  const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -85,69 +43,51 @@ const Login = () => {
 
   return (
     <div className='bg'>
-    <div className={classes.container}>
-      <form className={classes.formContainer} onSubmit={handleSubmit} >
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-          {/* <BackgroundVideo /> */}
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50%', marginLeft: '25%', minHeight: '100vh', padding: '16px' }}>
+      <form style={{ backgroundImage: 'rgb(255, 255, 255)', borderRadius: '20px', padding: '32px', boxShadow: '0px 0px 20px 7px rgb(102 102 102 / 71%)' }} onSubmit={handleSubmit} >
+        <div container spacing={2}>
+          <div item xs={12}>
+          <BackgroundVideo />
+          </div>
+          <div item xs={12}>
+            <input
               className="login-input"
-              label="Email"
+              placeholder="Email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              fullWidth
+              style={{width: '100%'}}
             />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
+          </div>
+          <div item xs={12}>
+            <input
               className="login-input"
-              label="Password"
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              fullWidth
+              style={{width: '100%'}}
             />
-          </Grid>
-          <Grid item xs={12}>
-            <Button className={classes.submitButton} variant="contained" color="primary" type="submit">
+          </div>
+          <div item xs={12}>
+            <button style={{marginTop: '16px', borderRadius: '25px', textTransform: 'none', padding: '8px 24px', background: '#3f51b5', color: '#fff', cursor: 'pointer'}} type="submit">
               Sign In
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="body2">
-              <Link href="#">Forgot password?</Link>
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <div className={classes.socialIconsContainer}>
-              <Grid container justifyContent="center">
-<Grid item>
-<IconButton className={classes.socialIcon}>
-{/* <Google /> */}
-</IconButton>
-</Grid>
-<Grid item>
-<IconButton className={classes.socialIcon}>
-<GitHub />
-</IconButton>
-</Grid>
-<Grid item>
-<IconButton className={classes.socialIcon}>
-<Facebook />
-</IconButton>
-<IconButton className={classes.socialIcon}>
-<LinkedIn />
-</IconButton>
-</Grid>
-</Grid>
+            </button>
+          </div>
+          <div item xs={12}>
+            <div variant="body2">
+              <a href="#">Forgot password?</a>
+            </div>
+          </div>
+          <div item xs={12}>
+            <div style={{marginTop: '16px', textAlign: 'center'}}>
+              <div container justifyContent="center">
 </div>
-</Grid>
-</Grid>
+</div>
+</div>
+</div>
 </form>
 </div>
 </div>

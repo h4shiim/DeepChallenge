@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
-import { FaFacebook, FaGithub } from 'react-icons/fa';
-import BackgroundVideo from '../Home/backgroundVideo';
-import './Register.css'; // import the Register.css file
+import './Register.css';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -59,65 +56,58 @@ const Register = () => {
       {/* <BackgroundVideo /> */}
       <form className="register-form" onSubmit={handleSubmit}>
         <div className="register-input-group">
-          <TextField
+          <input
             className="register-input"
-            label="Username"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            fullWidth
+            style={{width: '90%'}}
           />
         </div>
         <div className="register-input-group">
-          <TextField
+          <input
             className="register-input"
-            label="Email"
             type="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            fullWidth
+            style={{width: '90%'}}
           />
         </div>
         <div className="register-input-group">
-          <TextField
+          <input
             className="register-input"
-            label="Password"
             type="password"
+            placeholder="Password"
             value={password}
             onChange={handlePasswordChange}
             required
-            fullWidth
+            style={{width: '90%'}}
           />
         </div>
         <div className="register-input-group">
-          <TextField
+          <input
             className="register-input"
-            label="Confirm Password"
             type="password"
+            placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-            fullWidth
+            style={{width: '90%'}}
           />
         </div>
         <div className="register-input-group">
-          <Button
+          <button
             className="register-button"
-            variant="contained"
-            color="primary"
             type="submit"
+            style={{backgroundColor: '#007bff', color: 'white', padding: '10px 5px', border: 'none', borderRadius: '5px', cursor: 'pointer'}}
           >
             Register
-          </Button>
+          </button>
         </div>
-        <div className="register-social-login">
-          <p>Or sign up with:</p>
-          <div className="register-social-icons">
-            <FaFacebook className="register-social-icon" />
-            <FaGithub className="register-social-icon" />
-          </div>
-        </div>
+
       </form>
     </div>
   );

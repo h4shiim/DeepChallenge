@@ -1,50 +1,27 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, IconButton, Badge } from '@material-ui/core';
-import { ExitToApp, Person } from '@material-ui/icons';
-import Profile from "./Profile.jsx"
 import "./UserProfileHeader.css"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    color: 'green',
-  },
-  title: {
-    flexGrow: 1,
-  },
-  iconButton: {
-    marginLeft: theme.spacing(2),
-  },
-  AppBar: {
-    backgroundColor: 'gray',
-    boxShadow: '0px 0px 20px 7px rgb(102 102 102 / 71%)',
-    marginTop: '8px',  
-  }
-}));
-
 export default function UserProfileHeader({ username, onlineStatus, points, handleLogout }) {
-  const classes = useStyles();
   console.log("UserName:", username);
   console.log("OnlineStatus:", onlineStatus);
   console.log("Points:", points);
   return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.AppBar}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+    <div >
+      <div style={{backgroundColor: 'gray', boxShadow: '0px 0px 20px 7px rgb(102 102 102 / 71%)', marginTop: '8px'}}>
+        <div>
+          <div style={{flexGrow: 1}}>
             {username}'s Profile 
             
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
+          </div>
+          <div style={{flexGrow: 1}}>
           
-          </Typography>
-          <IconButton color="inherit" className={classes.iconButton} onClick={handleLogout}>
-            <ExitToApp />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Typography variant="h6" className='online-st' align="center">{onlineStatus ? 'online' : 'offline'}</Typography>
+          </div>
+          <button onClick={handleLogout} style={{marginLeft: '16px'}}>
+            Logout
+          </button>
+        </div>
+      </div>
+      <div className='online-st' style={{textAlign: 'center'}}>{onlineStatus ? 'online' : 'offline'}</div>
     </div>
   );
 }

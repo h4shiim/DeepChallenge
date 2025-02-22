@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import UserProfileHeader from './UserProfileHeader';
 import './Profile.css';
@@ -12,25 +11,9 @@ const PlansLink = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref} to="/Payment" {...props} />
 ));
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  avatar: {
-    width: theme.spacing(20),
-    height: theme.spacing(20),
-  },
-  editButton: {
-    marginLeft: theme.spacing(2),
-  },
-  saveButton: {
-    marginRight: theme.spacing(2),
-  },
-}));
-
 export default function UserProfile() {
   
-  const classNamees = useStyles();
+  const classNamees = {};
   const [userData, setUserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [username, setUsername] = useState('');
@@ -88,8 +71,7 @@ export default function UserProfile() {
         {},
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}` },
         }
       )
       .then(() => {
@@ -123,8 +105,7 @@ export default function UserProfile() {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}` },
         }
       );
       setUserData({
@@ -154,7 +135,7 @@ export default function UserProfile() {
     
     <div className="p-bg">
       
-    <div className={classNamees.root}>
+    <div >
       <UserProfileHeader
         username={userData?.username}
         onlineStatus={userData?.online}
@@ -190,7 +171,6 @@ export default function UserProfile() {
       <>
         <p className="bio">{userData?.bio}</p>
         <button type="button" className="p-edit-button" onClick={handleEdit}>
-          <i className="fas fa-edit"></i>
           Edit Profile
         </button>
         

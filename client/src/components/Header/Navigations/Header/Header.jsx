@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from "../Header/logo.png"
 import axios from 'axios';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignOutAlt, faContactCard, faFileContract, faContactBook, faExclamationTriangle, faAddressBook, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 
 const Header = () => {
@@ -62,16 +56,15 @@ const Header = () => {
         <Navbar.Toggle aria-controls="navbarScroll" className="navbar-toggler" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="navbar-nav me-auto mb-2 mb-lg-0">
-            
+            <Nav.Link href="/ChooseTrack" className="nav-link nav-log">Choose Track</Nav.Link>
+          <Nav.Link href="/Challenges" className="nav-link nav-log">Challenge</Nav.Link>
           
           
 
             {isLoggedIn ? (
               <>
-                <Nav.Link href="/ChooseTrack" className="nav-link nav-log">Choose your track</Nav.Link>
-                <Nav.Link href="/Profile" className="profile-icon"><FontAwesomeIcon icon={faUser} /></Nav.Link>
-                <Nav.Link onClick={handleLogout} className="logout-icon"><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
-                <Nav.Link href="/Challenges" className="nav-link nav-log">Challenges</Nav.Link>
+                <Nav.Link href="/Profile" className="profile-icon">Profile</Nav.Link>
+                <Nav.Link onClick={handleLogout} className="logout-icon">Logout</Nav.Link>
                 <Nav.Link href="/ContactUs" className="nav-link nav-log">Contact Us</Nav.Link>
               </>
             ) : (
