@@ -86,5 +86,4 @@ cd DeepChallenge
 npm install
 npm run dev
 
-MongoDB
-Make sure you have a local MongoDB instance running (or configure a cloud connection string in .env).
+
