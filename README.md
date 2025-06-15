@@ -82,7 +82,7 @@ npm install
 cd ../client
 npm install
 
-cd DeepChallenge
+cd ../DeepChallenge
 npm install
 npm run dev
 
