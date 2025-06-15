@@ -1,6 +1,6 @@
 # 🧠 DeepChallenge – A Gamified E-Learning Platform
 
-**DeepChallenge** is a full-stack educational web application designed to make learning to code interactive, competitive, and rewarding. Inspired by platforms like Codecademy and built as a graduation project by me, this app brings together structured curriculum delivery, a built-in code editor, and real-time coding duels.
+**DeepChallenge** is a full-stack educational DEMO web application designed to make learning to code interactive, competitive, and rewarding. Inspired by platforms like Codecademy and built as a graduation project by me, this app brings together structured curriculum delivery, a built-in code editor, and real-time coding duels.
 
 ---
 
